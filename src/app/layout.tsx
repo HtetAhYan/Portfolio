@@ -1,8 +1,17 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+import type { Metadata } from 'next'
+import { Bebas_Neue } from 'next/font/google'
+import './globals.css'
+import { LenisScroller } from '@/components/General/LenisScroll'
+import { Header } from '@/components/General/Header'
+import StoreProvider from './StateProvider'
+import StickyMenu from '@/components/General/StickyMenu'
+
+import TransitionHandler from '@/components/transition/TransitionManager'
+
+import { useAppSelector } from '@/lib/hookTypes'
+
+const Bebas = Bebas_Neue({ subsets:['latin'], weight: '400' })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -10,13 +19,18 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
-}) {
+  },) {
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      
+      <body className={Bebas.className}>
+        <StoreProvider >
+        <LenisScroller> <TransitionHandler >  <Header/> <StickyMenu/>{children}</TransitionHandler></LenisScroller></StoreProvider>
+       </body>
     </html>
   )
 }

@@ -1,0 +1,33 @@
+.main{
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+
+    flex-direction: column;
+    
+
+  
+}
+.body {
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.body p {
+    font-size: 30px;
+    margin: 0px;
+    margin-right: 1.5vw;
+    font-weight: 700;
+}
+
+@media screen and (min-width: 768px) {
+    .body {
+        width: 50%;
+    }
+
+    .body p {
+        font-size: 50px;
+    }
+}

@@ -56,8 +56,8 @@ useLayoutEffect(() => {
 	return (
 		// ---------- cards ----------
     <section className="cards z-20 p-10 pj-bg">
-      {projects.map((project) => (
-          <div className=" p-4 laptop:flex justify-between w-[100vw] "> 
+      {projects.map((project, index) => (
+          <div key={index} className=" p-4 laptop:flex justify-between w-[100vw] "> 
         <Card url={project.image}/>
         <div className="w-1/2"
         ><h1 className=" text-6xl laptop:text-9xl underline-pass-through text-white">{project.title}</h1></div>

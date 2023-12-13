@@ -43,9 +43,9 @@ gsap.fromTo(".pj-bg", {
   scrollTrigger: {
     trigger: ".pj-bg",
     start: "-=600",
-    end: "-=400",
+    end: "end  end",
     scrub: true,
-    markers: true,
+   
     onLeave: () => {
       // Revert text color to its original state (e.g., red)
       gsap.to(".text-color", {
@@ -58,7 +58,7 @@ gsap.fromTo(".pj-bg", {
           duration: 2,
         ease: "none",
       })
-    /*   gsap.set(".hamburgerOne", {
+      gsap.set(".hamburgerOne", {
         backgroundColor: "black",
           duration: 0.5,
         ease: "power2.inOut",
@@ -67,7 +67,7 @@ gsap.fromTo(".pj-bg", {
         backgroundColor: "black",
           duration: 0.5,
         ease: "power2.inOut",
-      }) */
+      })
     },
   },
 });

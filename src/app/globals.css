@@ -104,3 +104,9 @@ width: fit-content;
       transform: scaleX(1);
       transform-origin: left;
     }
+    .header-color{
+      color:white;
+    }
+    .pj-bg{
+      background-color: black;
+    }

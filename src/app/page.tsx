@@ -14,7 +14,7 @@ export default function Home() {
   const load = useAppSelector((state) => state.loadReducer.isLoading);
 
   return (
-    <main className={` relative ${load ? 'overflow-hidden max-h-[100vh] overflow-y-hidden' : ''}`}>
+    <main className={`h-[1000vh] relative ${load ? 'overflow-hidden max-h-[100vh] overflow-y-hidden' : ''}`}>
 
       <Hero />
       <Zero1 />

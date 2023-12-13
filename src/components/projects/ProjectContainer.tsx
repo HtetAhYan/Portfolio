@@ -16,7 +16,7 @@ const Card = ({url}: {url: string}) => {
         <Image
           alt="project"
 					src={url}
-          className="card-cover pj-bg"
+          className="card-cover pj-bg "
           width={1000}
           height={1000}
 				/>
@@ -55,9 +55,9 @@ useLayoutEffect(() => {
 
 	return (
 		// ---------- cards ----------
-    <section className="cards z-20 py-6 laptop:p-10  h-[300vh]">
+    <section className="cards z-20 py-6 laptop:p-10   bg-black">
       {projects.map((project, index) => (
-          <div key={index} className=" laptop:p-4 laptop:flex justify-between w-[100vw] "> 
+          <div key={index} className=" laptop:p-4 laptop:flex justify-between w-[100vw]  "> 
         <Card url={project.image}/>
         <div className="w-1/2"
         ><h1 className=" text-6xl laptop:text-9xl underline-pass-through text-white">{project.title}</h1></div>

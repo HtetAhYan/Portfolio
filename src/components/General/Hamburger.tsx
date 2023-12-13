@@ -11,7 +11,7 @@ const dispatch = useAppDispatch();
 
        loaded &&  dispatch(setMenuLoading(!open));
   };
-     const hamburgerClasses = ` bg-white transform transition-transform `;
+     const hamburgerClasses = `bg-white transform transition-transform `;
      
   return (
     <div className={` ${open && 'bg-opacity-[10%]' } bg-black  h-screen w-[100%]   header cursor-pointer`}  >

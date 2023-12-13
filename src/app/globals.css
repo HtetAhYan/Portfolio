@@ -15,9 +15,7 @@
 }
 
 
-body {
-  background-color: #ffffff;
-}
+
 /* ---------- container styles ---------- */
 
 /* ---------- card styles ---------- */
@@ -63,7 +61,8 @@ body {
 }
 
 body {
-  color: rgb(var(--text-color));
+  color: black;
+   background-color: #ffffff;
 overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
 

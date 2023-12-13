@@ -9,7 +9,7 @@ import StickyMenu from '@/components/General/StickyMenu'
 
 import TransitionHandler from '@/components/transition/TransitionManager'
 
-import { useAppSelector } from '@/lib/hookTypes'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const Bebas = Bebas_Neue({ subsets:['latin'], weight: '400' })
 
@@ -28,6 +28,7 @@ export default function RootLayout({
     <html lang="en">
       
       <body className={Bebas.className}>
+        <SpeedInsights/>
         <StoreProvider >
         <LenisScroller> <TransitionHandler >  <Header/> <StickyMenu/>{children}</TransitionHandler></LenisScroller></StoreProvider>
        </body>

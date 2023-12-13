@@ -1,13 +1,14 @@
 // LenisScroller.tsx
 "use client"
-import React, { ReactElement, useEffect, useLayoutEffect } from "react";
+import React, {  useLayoutEffect } from "react";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap-trial";
 import { ScrollTrigger } from "gsap-trial/dist/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export  const LenisScroller = ({ children }: { children: React.ReactNode }) => {
+export const LenisScroller = ({ children }: { children: React.ReactNode }) => {
+  
   useLayoutEffect(() => {
     const lenis = new Lenis();
     lenis.on("scroll", ScrollTrigger.update);
@@ -20,29 +21,28 @@ gsap.ticker.fps(60);
 
 
    // Change text color to white when scrolling over the background
-gsap.to(".text-color", {
+  gsap.to(".text-color", {
   color: "white", // Change to the desired color
-  duration: 2,
-  ease: "expo.inOut",
+  duration: 0.2,
+  ease: "none",
   scrollTrigger: {
     trigger: ".pj-bg",
-    start: "-=100",
-    end: "top top",
+    start: "top top",
+    end: "end end",
+    markers: true,
     toggleActions: "play none none reverse",
   },
 });
-changeColor(".header", "black");
-    changeColor(".hamburgerOne", "black");
-    changeColor(".hamburgerTwo", "black");
+
 // Change background color to black when scrolling over the background
 gsap.fromTo(".pj-bg", {
   backgroundColor: "rgba(0,0,0,0)",
 }, {
-  backgroundColor: "black",
+
   ease: "none",
   scrollTrigger: {
     trigger: ".pj-bg",
-    start: "-=600",
+    start: "top top",
     end: "end  end",
     scrub: true,
    
@@ -50,28 +50,13 @@ gsap.fromTo(".pj-bg", {
       // Revert text color to its original state (e.g., red)
       gsap.to(".text-color", {
         color: "white",
-        duration: 0.5,
-        ease: "power2.inOut",
-      });
-      gsap.set(".header", {
-        backgroundColor: "white",
-          duration: 2,
+        duration: 0.1,
         ease: "none",
-      })
-      gsap.set(".hamburgerOne", {
-        backgroundColor: "black",
-          duration: 0.5,
-        ease: "power2.inOut",
-      })
-      gsap.set(".hamburgerTwo", {
-        backgroundColor: "black",
-          duration: 0.5,
-        ease: "power2.inOut",
-      })
+      });
+   
     },
   },
 });
-
 
     return () => {
       lenis.destroy();
@@ -80,18 +65,10 @@ gsap.fromTo(".pj-bg", {
 
   return <>{children}</>;
 };
-const changeColor = (element: String, bgColor: any) => {
-  gsap.to(element, {
-    backgroundColor: bgColor,
-    scrollTrigger: {
-      trigger: ".pj-bg",
-      start: "-=200",
-      end: "top center",
-      scrub: true,
-      toggleActions: "play none none reverse",
-    }
-  });
-}
 
 // Usage
+
+const changePjBg=()=>{
+
+}
 

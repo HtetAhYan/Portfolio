@@ -15,7 +15,9 @@
 }
 
 
-
+body {
+  background-color: #ffffff;
+}
 /* ---------- container styles ---------- */
 
 /* ---------- card styles ---------- */

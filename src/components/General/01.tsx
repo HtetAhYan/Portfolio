@@ -25,7 +25,7 @@ export default function ZeroOne() {
       createAnimation();
 
     }
-  }, [container.current, body.current]);
+  }, [container, body]);
 
   const createAnimation = () => {
       gsap.to(refs.current, {

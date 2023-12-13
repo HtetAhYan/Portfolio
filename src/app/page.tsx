@@ -15,11 +15,11 @@ export default function Home() {
 
   return (
     <main className={` relative ${load ? 'overflow-hidden max-h-[100vh] overflow-y-hidden' : ''}`}>
-      <div>
+
       <Hero />
       <Zero1 />
         <Zero2 />
-        </div>
+      
     </main>
   );
 }

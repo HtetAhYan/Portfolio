@@ -2,7 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialState = {
     isLoading: true,
     menuLoading: true,
-    path:'',
+    path: '',
+    introLoaded: false
 }
 export const loadSlice=createSlice({
     name:'load',
@@ -20,8 +21,10 @@ export const loadSlice=createSlice({
             state.isLoading=true
             state.menuLoading = true
             
+        },setIntroLoaded:(state:typeof initialState,action:PayloadAction<boolean>)=>{
+            state.introLoaded=action.payload
         }
     }
 })
-    export const {setLoading,setMenuLoading,setClear,setPath}=loadSlice.actions
+    export const {setLoading,setMenuLoading,setClear,setPath,setIntroLoaded}=loadSlice.actions
 export default loadSlice.reducer

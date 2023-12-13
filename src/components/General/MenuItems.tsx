@@ -1,8 +1,8 @@
-import { setMenuLoading, setPath } from '@/lib/Slice/LoadSlice';
+import {  setPath } from '@/lib/Slice/LoadSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hookTypes';
 import gsap from 'gsap-trial';
-import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+
+import React, { ReactPropTypes, useEffect, useRef } from 'react';
 const animateMenuItems = (menu:any, props: any) => {
   gsap.to(menu, {
     ...props,
@@ -31,7 +31,11 @@ const animateMenuItemsOpen = () => {
     stagger: 0.1,
   })
 }
-export const MenuItems = () => {
+interface MenuItemsProps {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  open: boolean;
+}
+export const MenuItems: React.FC<MenuItemsProps> = ({setOpen,open}) => {
   const isMenuLoading = useAppSelector((state) => state.loadReducer.menuLoading);
   const itemRefs = useRef([]);
   const dispatch = useAppDispatch();
@@ -50,7 +54,7 @@ export const MenuItems = () => {
           <h3 className='text-xl text-white'>Navigations-{">" }</h3>
           {items.map((item, index) => (
           // @ts-ignore
-        <h1  onClick={() => dispatch(setPath(item.url))}  key={index} className=' underline-pass-through translate-x-[500px] translate-y-[500px] text-[80px] text-white items' ref={(el) => itemRefs.current.push(el)}>
+        <h1  onClick={() => {dispatch(setPath(item.url)); setOpen(false)}}  key={index} className=' underline-pass-through translate-x-[500px] translate-y-[500px] text-[80px] text-white items' ref={(el) => itemRefs.current.push(el)}>
 {item.name}
         </h1>
       ))}

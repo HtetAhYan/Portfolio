@@ -1,8 +1,8 @@
 'use client'
-import { useAppDispatch } from '@/lib/hookTypes';
-import React, { ReactElement, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useAppDispatch, useAppSelector } from '@/lib/hookTypes';
+import React, {  useEffect, useLayoutEffect, useRef, useState } from 'react'
 import HamburgerMenu from './Hamburger';
-import { setLoading, setMenuLoading } from '@/lib/Slice/LoadSlice';
+import { setIntroLoaded, setLoading, setMenuLoading } from '@/lib/Slice/LoadSlice';
 import gsap from 'gsap-trial';
 
 import OutsideClickHandler from 'react-outside-click-handler';
@@ -14,12 +14,12 @@ const animateMenu = (menu:any, props: any) => {
   });
 };
 const StickyMenu = () => {
-  const [hamburgerLoaded, setHamburgerLoaded] = useState(false);
+const hamburgerLoaded = useAppSelector((state) => state.loadReducer.introLoaded);
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
 
   useLayoutEffect(() => {
-    introAnimation(dispatch, setHamburgerLoaded);
+    introAnimation(dispatch);
   
   }, [])
   const menuRef = useRef(null);
@@ -56,6 +56,7 @@ height: menusize,
         right: '-400',
         backgroundColor: 'transparent',
         zIndex: 0,
+        
      
       });
     };
@@ -81,7 +82,7 @@ height: menusize,
         }
       }}
     >
-      <div ref={menuRef} className='fixed grid justify-center overflow-hidden '><MenuItems/></div>
+      <div ref={menuRef} className='fixed grid justify-center overflow-hidden '><MenuItems setOpen={setOpen} open={open}/></div>
   <div      className={`fixed  w-screen z-50 ${hamburgerLoaded ? 'top-1 right-1' : 'top-0 right-0'} flex justify-end `}>
     <HamburgerMenu loaded={hamburgerLoaded} setOpen={setOpen} open={open} />
   </div></OutsideClickHandler></>
@@ -90,20 +91,22 @@ height: menusize,
 }
 
 export default StickyMenu
-const introAnimation = (dispatch: any,setHamburgerLoaded: any) => {
+export const introAnimation = (dispatch: any) => {
  
   gsap.fromTo('.hamburgerOne', {
     width: 0,
     delay: 2,
+    backgroundColor: 'white',
   }, {
     width: '36px',
-    height:'3px',
+    height: '3px',
+    
     duration: 1,
     ease: 'power4.out',
     onComplete: () => {
       gsap.fromTo('.hamburgerTwo', {
         width: '0px',
-        
+        backgroundColor: 'white',
         duration: 1,
         
       }, {
@@ -112,18 +115,20 @@ const introAnimation = (dispatch: any,setHamburgerLoaded: any) => {
         height:'3px',
         duration: 1,
         ease: 'power4.out',
+  
         onComplete: () => {
           dispatch(setLoading(false))
  
              gsap.to('.header', {
     width: '54px', height: '54px',
-    borderRadius: '50%',
+               borderRadius: '50%',
+    
   duration: 0.5,
                right: 0,
     onComplete: () => {
-               setHamburgerLoaded(true)
-    }
-   
+               dispatch(setIntroLoaded(true))
+    },
+  
   })
             
       }

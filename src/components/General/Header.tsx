@@ -4,10 +4,10 @@ import React, {  } from 'react';
 export const Header = () => {
 
   return (
-    <div className={`sticky top-0 p-4  justify-between items-center   flex z-50  `}>
+    <div className={`fixed top-0 p-4  justify-between items-center  text-color  flex z-50  `}>
       <div className=''>
-        <h1 className="text-2xl font-bold text-color">HAY</h1>
-        <p className="text-sm text-color">Web Developer</p>
+        <h1 className="text-2xl font-bold  ">HAY</h1>
+        <p className="text-sm ">Web Developer</p>
       </div>
     
     </div>

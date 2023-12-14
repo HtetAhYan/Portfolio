@@ -15,11 +15,10 @@ const Hero = () => {
       
 gsap.registerPlugin(ScrollTrigger);
   
-!loading &&
+
     animateTxt(ref);
-    }, [loading]);
-  console.log(loading);
-  
+    }, []);
+   
 
   const highlightTextStyles = 'text-[#0e1129] font-bold text-8xl tablet:text-9xl laptop:text-[12em]';
   const ScrollTo = () => {
@@ -27,7 +26,7 @@ gsap.registerPlugin(ScrollTrigger);
     gsap.to(window, { duration: 2, scrollTo: `${window.innerHeight }` });
   }
   return (
-    <div className="p-8  min-h-screen grid flex-col justify-center tablet:justify-normal items-center ">
+    <div className="p-8  min-h-screen grid flex-col   justify-center tablet:justify-normal items-center ">
       {/* Combined Text with Different Styles */}
       <div className='mx-auto  '>
         <div  className='overflow-hidden '>

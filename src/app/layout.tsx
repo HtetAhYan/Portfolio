@@ -5,7 +5,7 @@ import './globals.css'
 import { LenisScroller } from '@/components/General/LenisScroll'
 import { Header } from '@/components/General/Header'
 import StoreProvider from './StateProvider'
-import StickyMenu from '@/components/General/StickyMenu'
+
 
 import TransitionHandler from '@/components/transition/TransitionManager'
 
@@ -30,7 +30,7 @@ export default function RootLayout({
       <body className={Bebas.className}>
         <SpeedInsights/>
         <StoreProvider >
-        <LenisScroller> <TransitionHandler >  <Header/> <StickyMenu/>{children}</TransitionHandler></LenisScroller></StoreProvider>
+        <LenisScroller> <TransitionHandler >  <Header/> <div className='relative top-0'> </div>{children}</TransitionHandler></LenisScroller></StoreProvider>
        </body>
     </html>
   )

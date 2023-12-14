@@ -74,7 +74,7 @@ export default function ZeroOne() {
   }
 
   return (
-    <main ref={container} className={`${styles.main} justify-between py-36 z-20`}>
+    <main ref={container} className={`${styles.main}  pj-bg  justify-between py-36 z-20`}>
 {/*       {!loaded && <div className='sticky top-0  h-screen w-screen bg-black'></div>} */}
       <h1 className='absolute top-0  text-2xl laptop:text-4xl opacity-80 heading '>1/3</h1>
    
